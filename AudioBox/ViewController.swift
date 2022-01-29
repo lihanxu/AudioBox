@@ -17,8 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var playCreatedButton: UIButton!
     @IBOutlet weak var frequencySlider: UISlider!
     @IBOutlet weak var frequencyValueLabel: UILabel!
-    lazy var player: AudioPlayer = {
-        return AudioPlayer()
+    lazy var player: KarplusStrongPlayer = {
+        return KarplusStrongPlayer()
     }()
     
     @IBOutlet weak var earsBackButton: UIButton!

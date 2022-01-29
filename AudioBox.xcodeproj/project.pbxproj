@@ -26,10 +26,8 @@
 		9A07FE1B27A3E89900313EB7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A07FE1A27A3E89900313EB7 /* AudioToolbox.framework */; };
 		9A07FE1D27A3E89D00313EB7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A07FE1C27A3E89D00313EB7 /* AVFoundation.framework */; };
 		9A07FE1F27A3E8A300313EB7 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A07FE1E27A3E8A200313EB7 /* VideoToolbox.framework */; };
-		9A07FE3627A3E9C300313EB7 /* EarsBackSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A07FE2E27A3E9C300313EB7 /* EarsBackSS.swift */; };
 		9A07FE3727A3E9C300313EB7 /* EarsBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A07FE3127A3E9C300313EB7 /* EarsBack.m */; };
-		9A07FE3827A3E9C300313EB7 /* KarplusStrong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A07FE3227A3E9C300313EB7 /* KarplusStrong.cpp */; };
-		9A07FE3927A3E9C300313EB7 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A07FE3527A3E9C300313EB7 /* AudioPlayer.m */; };
+		9A07FE3927A3E9C300313EB7 /* KarplusStrongPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A07FE3527A3E9C300313EB7 /* KarplusStrongPlayer.m */; };
 		9A07FE4027A3EA9300313EB7 /* AudioRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A07FE3A27A3EA9200313EB7 /* AudioRecord.cpp */; };
 		9A07FE4127A3EA9300313EB7 /* FFmpegPresenter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A07FE3D27A3EA9300313EB7 /* FFmpegPresenter.mm */; };
 		9A07FE4227A3EA9300313EB7 /* AudioEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A07FE3E27A3EA9300313EB7 /* AudioEncoder.cpp */; };
@@ -181,14 +179,11 @@
 		9A07FE1A27A3E89900313EB7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9A07FE1C27A3E89D00313EB7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9A07FE1E27A3E8A200313EB7 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
-		9A07FE2E27A3E9C300313EB7 /* EarsBackSS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarsBackSS.swift; sourceTree = "<group>"; };
 		9A07FE2F27A3E9C300313EB7 /* ErrorCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorCheck.h; sourceTree = "<group>"; };
-		9A07FE3027A3E9C300313EB7 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		9A07FE3027A3E9C300313EB7 /* KarplusStrongPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KarplusStrongPlayer.h; sourceTree = "<group>"; };
 		9A07FE3127A3E9C300313EB7 /* EarsBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarsBack.m; sourceTree = "<group>"; };
-		9A07FE3227A3E9C300313EB7 /* KarplusStrong.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KarplusStrong.cpp; sourceTree = "<group>"; };
-		9A07FE3327A3E9C300313EB7 /* KarplusStrong.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KarplusStrong.hpp; sourceTree = "<group>"; };
 		9A07FE3427A3E9C300313EB7 /* EarsBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarsBack.h; sourceTree = "<group>"; };
-		9A07FE3527A3E9C300313EB7 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
+		9A07FE3527A3E9C300313EB7 /* KarplusStrongPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KarplusStrongPlayer.m; sourceTree = "<group>"; };
 		9A07FE3A27A3EA9200313EB7 /* AudioRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioRecord.cpp; sourceTree = "<group>"; };
 		9A07FE3B27A3EA9200313EB7 /* FFmpegPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFmpegPresenter.h; sourceTree = "<group>"; };
 		9A07FE3C27A3EA9200313EB7 /* AudioRecord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AudioRecord.hpp; sourceTree = "<group>"; };
@@ -486,14 +481,11 @@
 		9A07FE2D27A3E9C300313EB7 /* AUGragh */ = {
 			isa = PBXGroup;
 			children = (
-				9A07FE2E27A3E9C300313EB7 /* EarsBackSS.swift */,
 				9A07FE2F27A3E9C300313EB7 /* ErrorCheck.h */,
-				9A07FE3027A3E9C300313EB7 /* AudioPlayer.h */,
-				9A07FE3127A3E9C300313EB7 /* EarsBack.m */,
-				9A07FE3227A3E9C300313EB7 /* KarplusStrong.cpp */,
-				9A07FE3327A3E9C300313EB7 /* KarplusStrong.hpp */,
 				9A07FE3427A3E9C300313EB7 /* EarsBack.h */,
-				9A07FE3527A3E9C300313EB7 /* AudioPlayer.m */,
+				9A07FE3127A3E9C300313EB7 /* EarsBack.m */,
+				9A07FE3027A3E9C300313EB7 /* KarplusStrongPlayer.h */,
+				9A07FE3527A3E9C300313EB7 /* KarplusStrongPlayer.m */,
 			);
 			path = AUGragh;
 			sourceTree = "<group>";
@@ -575,10 +567,8 @@
 				9A07FD6727A3E5AC00313EB7 /* ViewController.swift in Sources */,
 				9A07FD6327A3E5AC00313EB7 /* AppDelegate.swift in Sources */,
 				9A07FD6527A3E5AC00313EB7 /* SceneDelegate.swift in Sources */,
-				9A07FE3627A3E9C300313EB7 /* EarsBackSS.swift in Sources */,
-				9A07FE3927A3E9C300313EB7 /* AudioPlayer.m in Sources */,
+				9A07FE3927A3E9C300313EB7 /* KarplusStrongPlayer.m in Sources */,
 				9A07FE4227A3EA9300313EB7 /* AudioEncoder.cpp in Sources */,
-				9A07FE3827A3E9C300313EB7 /* KarplusStrong.cpp in Sources */,
 				9A07FE4127A3EA9300313EB7 /* FFmpegPresenter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

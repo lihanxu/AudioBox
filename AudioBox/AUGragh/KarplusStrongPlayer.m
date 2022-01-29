@@ -1,5 +1,5 @@
 //
-//  AudioPlayer.m
+//  KarplusStrongPlayer.m
 //  LiveStudio
 //
 //  Created by hxli on 2019/8/20.
@@ -7,10 +7,12 @@
 //
 
 #import <AudioToolbox/AudioToolbox.h>
-#import "AudioPlayer.h"
+#import "KarplusStrongPlayer.h"
 #import "ErrorCheck.h"
 
-@interface AudioPlayer() {
+#define Count (70)
+
+@interface KarplusStrongPlayer() {
     AUGraph _audioGraph;
     AUNode _playerNode;
     AudioUnit _playerUnit;
@@ -20,12 +22,18 @@
     double _frequency;
     double _sampleRate;
     double _theta;
+    double _amplitude;
+    Float32 _buffer[Count * 2];
+    NSInteger _index;
+    NSInteger _count;
 }
+
+@property (strong, nonatomic) NSTimer *timer;
 
 @end
 
 
-@implementation AudioPlayer
+@implementation KarplusStrongPlayer
 
 #pragma mark - Init
 
@@ -36,6 +44,9 @@
         _frequency = 440; //Hz
         _sampleRate = 44100; //Hz
         _theta = 0;
+        _amplitude = 0.25;
+        _index = 0;
+        _count = Count;
         [self initAudioGraph];
     }
     return self;
@@ -110,6 +121,7 @@
 #pragma mark - Action
 - (void)start
 {
+    [self createTimer];
     // AUGraphStart is time-consuming
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         Boolean isRunning;
@@ -122,6 +134,7 @@
 
 - (void)stop
 {
+    [self cancelTimer];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         Boolean isRunning;
         AUGraphIsRunning(self->_audioGraph, &isRunning);
@@ -135,32 +148,76 @@
     _frequency = frequency;
 }
 
+- (void)cancelTimer {
+    if (self.timer == nil) {
+        return;
+    }
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+- (void)createTimer {
+    [self cancelTimer];
+    __weak KarplusStrongPlayer *sself = self;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [sself createBuffer];
+    }];
+    [self.timer fire];
+}
+
+- (void)createBuffer {
+    double amplitude = _amplitude;
+    
+    _count = _count + 5;
+    _count = _count > Count * 2 ? Count : _count;
+    
+    double theta_increment = 2.0 * M_PI * _frequency / _sampleRate;
+    for (int i = 0; i < _count; i++) {
+        _buffer[i] = sin(_theta) * amplitude;
+        _theta += theta_increment;
+        if (_theta > 2.0 * M_PI) {
+            _theta -= 2.0 * M_PI;
+        }
+    }
+}
+
 #pragma mark - Callback
 OSStatus PlayCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
     // Fixed amplitude is good enough for our purposes
     const double amplitude = 0.25;
 
-    AudioPlayer *player = (__bridge AudioPlayer *)inRefCon;
+    KarplusStrongPlayer *player = (__bridge KarplusStrongPlayer *)inRefCon;
     
-    double theta = player->_theta;
-    double theta_increment = 2.0 * M_PI * player->_frequency / player->_sampleRate;
-
+//    double theta = player->_theta;
+//    double theta_increment = 2.0 * M_PI * player->_frequency / player->_sampleRate;
+//
+//    // This is a mono tone generator so we only need the first buffer
+//    const int channel = 0;
+//    Float32 *buffer = (Float32 *)ioData->mBuffers[channel].mData;
+//
+//    // Generate the samples
+//    for (UInt32 frame = 0; frame < inNumberFrames; frame++) {
+//        buffer[frame] = sin(theta) * amplitude;
+//        theta += theta_increment;
+//        if (theta > 2.0 * M_PI) {
+//            theta -= 2.0 * M_PI;
+//        }
+//    }
+//
+//    // Store the theta back in the view controller
+//    player->_theta = theta;
+    
     // This is a mono tone generator so we only need the first buffer
     const int channel = 0;
     Float32 *buffer = (Float32 *)ioData->mBuffers[channel].mData;
+    NSInteger count = player->_count;
     
     // Generate the samples
     for (UInt32 frame = 0; frame < inNumberFrames; frame++) {
-        buffer[frame] = sin(theta) * amplitude;
-        theta += theta_increment;
-        if (theta > 2.0 * M_PI) {
-            theta -= 2.0 * M_PI;
-        }
+        buffer[frame] = (player->_buffer[player->_index] + player->_buffer[(player->_index + count - 1) % count]) / 2.0;
+        player->_buffer[player->_index] = buffer[frame];
+        player->_index = (player->_index + 1) % count;
     }
-//    ioData->mBuffers[0].mDataByteSize = 0;
-
-    // Store the theta back in the view controller
-    player->_theta = theta;
 
     return noErr;
 }

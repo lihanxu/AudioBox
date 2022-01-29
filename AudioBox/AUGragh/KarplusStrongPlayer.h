@@ -1,5 +1,5 @@
 //
-//  AudioPlayer.h
+//  KarplusStrongPlayer.h
 //  LiveStudio
 //
 //  Created by hxli on 2019/8/20.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AudioPlayer : NSObject
+@interface KarplusStrongPlayer : NSObject
 
 - (void)stop;
 - (void)start;

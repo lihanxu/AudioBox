@@ -3,5 +3,5 @@
 //
 
 #import "FFmpegPresenter.h"
-#import "AudioPlayer.h"
+#import "KarplusStrongPlayer.h"
 #import "EarsBack.h"
