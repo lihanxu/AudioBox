@@ -8,6 +8,7 @@
 #import "FFmpegPresenter.h"
 #import "AudioRecord.hpp"
 #import "AudioEncoder.hpp"
+#import "SDLPlayer.hpp"
 
 @interface FFmpegPresenter() {
     AudioRecord _audioRecorder;
@@ -54,8 +55,11 @@
     AudioEncoder::pcm2wav(pcm_path, header, wav_path);
 }
 
-- (void)playWAV {
-    
+- (void)playPCM {
+    const char *pcm_path = [self.path cStringUsingEncoding:NSString.defaultCStringEncoding];
+    SDLPlayer player = SDLPlayer();
+    player.initSDL();
+    player.play_file(pcm_path);
 }
 
 

@@ -65,7 +65,7 @@ bool AudioRecord::startRecordAudio(string path) {
             // 释放资源
             av_packet_unref(packet);
         } else if (ret == AVERROR(EAGAIN)) { // 资源临时不可用
-            usleep(23 * 1000);
+            usleep(10 * 1000);
             cout<< "error: EAGAIN" <<endl;
             continue;
         } else { // 出错了

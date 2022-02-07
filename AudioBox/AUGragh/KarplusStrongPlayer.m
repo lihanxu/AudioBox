@@ -184,7 +184,7 @@
 #pragma mark - Callback
 OSStatus PlayCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
     // Fixed amplitude is good enough for our purposes
-    const double amplitude = 0.25;
+//    const double amplitude = 0.25;
 
     KarplusStrongPlayer *player = (__bridge KarplusStrongPlayer *)inRefCon;
     

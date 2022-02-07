@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)startRecordPCMWithPath:(NSString *)path;
 - (void)stopRecordPCM;
 - (void)coverToWAV;
-- (void)playWAV;
+- (void)playPCM;
 
 @end
 

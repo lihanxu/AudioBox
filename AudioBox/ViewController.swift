@@ -65,7 +65,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playWavButtonDidClick(_ sender: Any) {
-        presenter.playWAV();
+        presenter.playPCM();
     }
     
     // MARK: Create audio
