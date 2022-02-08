@@ -55,11 +55,9 @@ class ViewController: UIViewController {
         guard let temPath = self.temPath else {
             return
         }
-        guard ffPresenter.initDevice() == true else {
-            return
-        }
         ffPresenter.startRecordPCM(withPath: temPath)
     }
+    
     @IBAction func coverToWavButtonDidClick(_ sender: Any) {
         ffPresenter.coverToWAV();
     }
@@ -103,5 +101,13 @@ class ViewController: UIViewController {
             earsBack.stop()
         }
     }
+    
+    @IBAction func resamplePCMButtonDidClick(_ sender: Any) {
+        guard let temPath = self.temPath else {
+            return
+        }
+        ffPresenter.resamlePCM(temPath);
+    }
+    
 }
 

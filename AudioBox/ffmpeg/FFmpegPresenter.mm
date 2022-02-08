@@ -9,6 +9,7 @@
 #import "AudioRecord.hpp"
 #import "AudioEncoder.hpp"
 #import "SDLPlayer.hpp"
+#import "AudioResample.hpp"
 
 extern "C" {
 #include <libavdevice/avdevice.h>
@@ -33,12 +34,9 @@ extern "C" {
     self = [super init];
     if (self) {
         _audioRecorder = AudioRecord();
+        _audioRecorder.initDevice();
     }
     return self;
-}
-
-- (BOOL)initDevice {
-    return _audioRecorder.initDevice();
 }
 
 - (void)startRecordPCMWithPath:(NSString *)path {
@@ -77,6 +75,33 @@ extern "C" {
     SDLPlayer player = SDLPlayer();
     player.initSDL();
     player.play_wav(wav_path);
+}
+
+- (void)resamlePCM:(NSString *)path {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self startRecordPCMWithPath:path];
+    });
+    [self performSelector:@selector(startResamplePCM) withObject:nil afterDelay:10.0];
+}
+
+- (void)startResamplePCM {
+    [self stopRecordPCM];
+    const char *pcm_path = [self.path cStringUsingEncoding:NSString.defaultCStringEncoding];
+    ResampleAudioSpec inSpec;
+    inSpec.filename = pcm_path;
+    inSpec.sampleRate = 44100;
+    inSpec.sampleFmt = AV_SAMPLE_FMT_S16;
+    inSpec.chLayout = AV_CH_LAYOUT_MONO;
+    
+    NSString *outPath = [self.path.stringByDeletingPathExtension stringByAppendingString:@"2.pcm"];
+    const char *out_path = [outPath cStringUsingEncoding:NSString.defaultCStringEncoding];
+    ResampleAudioSpec outSpec;
+    outSpec.filename = out_path;
+    outSpec.sampleRate = 48000;
+    outSpec.sampleFmt = AV_SAMPLE_FMT_FLT;
+    outSpec.chLayout = AV_CH_LAYOUT_STEREO;
+
+    AudioResample::resampleAudio(inSpec, outSpec);
 }
 
 @end
