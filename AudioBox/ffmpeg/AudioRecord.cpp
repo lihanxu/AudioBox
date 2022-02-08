@@ -11,7 +11,6 @@
 #include <unistd.h>
 extern "C" {
     #include <libavcodec/avcodec.h>
-    #include <libavdevice/avdevice.h>
     #include <libavutil/avutil.h>
 }
 
@@ -20,7 +19,6 @@ extern void showDevice();
 
 bool AudioRecord::initDevice() {
 //    showDevice();
-    avdevice_register_all();
     AVInputFormat *fmt = av_find_input_format("avfoundation");
     if (fmt == nullptr) {
         cout<<"error: 没有找到输入格式！！！"<<endl;
@@ -110,7 +108,6 @@ void showSpec(AVFormatContext *ctx) {
 }
 
 void showDevice() {
-    avdevice_register_all();
     AVFormatContext *pFormatCtx = avformat_alloc_context();
     AVDictionary* options = NULL;
     av_dict_set(&options,"list_devices","true",0);

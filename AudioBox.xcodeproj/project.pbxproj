@@ -36,6 +36,7 @@
 		9A2F194F27B10B0800F1EF1F /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2F194E27B10B0800F1EF1F /* CoreHaptics.framework */; };
 		9A2F195027B10C9600F1EF1F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2F193E27B1098400F1EF1F /* CoreMotion.framework */; };
 		9A2F195127B10CB100F1EF1F /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2F194227B1099A00F1EF1F /* GameController.framework */; };
+		9A2F196327B2220500F1EF1F /* AudioResamle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F196127B2220500F1EF1F /* AudioResamle.cpp */; };
 		9A68DF2627B0F87200F54BE7 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A68DF2527B0F87200F54BE7 /* libSDL2.a */; };
 		9A68DF6B27B0FEBE00F54BE7 /* SDLPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A68DF6927B0FEBE00F54BE7 /* SDLPlayer.cpp */; };
 /* End PBXBuildFile section */
@@ -209,6 +210,8 @@
 		9A2F194A27B109CC00F1EF1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9A2F194C27B10ADF00F1EF1F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		9A2F194E27B10B0800F1EF1F /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
+		9A2F196127B2220500F1EF1F /* AudioResamle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioResamle.cpp; sourceTree = "<group>"; };
+		9A2F196227B2220500F1EF1F /* AudioResamle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AudioResamle.hpp; sourceTree = "<group>"; };
 		9A68DF2527B0F87200F54BE7 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDL2.a; sourceTree = "<group>"; };
 		9A68DF2827B0FA1F00F54BE7 /* SDL_misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_misc.h; sourceTree = "<group>"; };
 		9A68DF2927B0FA1F00F54BE7 /* SDL_opengles2_gl2ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_opengles2_gl2ext.h; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 				9A07FE3C27A3EA9200313EB7 /* AudioRecord.hpp */,
 				9A68DF6927B0FEBE00F54BE7 /* SDLPlayer.cpp */,
 				9A68DF6A27B0FEBE00F54BE7 /* SDLPlayer.hpp */,
+				9A2F196127B2220500F1EF1F /* AudioResamle.cpp */,
+				9A2F196227B2220500F1EF1F /* AudioResamle.hpp */,
 				9A07FE3B27A3EA9200313EB7 /* FFmpegPresenter.h */,
 				9A07FE3D27A3EA9300313EB7 /* FFmpegPresenter.mm */,
 			);
@@ -745,6 +750,7 @@
 			files = (
 				9A07FE3727A3E9C300313EB7 /* EarsBack.m in Sources */,
 				9A07FE4027A3EA9300313EB7 /* AudioRecord.cpp in Sources */,
+				9A2F196327B2220500F1EF1F /* AudioResamle.cpp in Sources */,
 				9A07FD6727A3E5AC00313EB7 /* ViewController.swift in Sources */,
 				9A07FD6327A3E5AC00313EB7 /* AppDelegate.swift in Sources */,
 				9A07FD6527A3E5AC00313EB7 /* SceneDelegate.swift in Sources */,

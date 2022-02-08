@@ -10,6 +10,11 @@
 #import "AudioEncoder.hpp"
 #import "SDLPlayer.hpp"
 
+extern "C" {
+#include <libavdevice/avdevice.h>
+}
+
+
 @interface FFmpegPresenter() {
     AudioRecord _audioRecorder;
 }
@@ -19,6 +24,10 @@
 @end
 
 @implementation FFmpegPresenter
+
++ (void)load {
+    avdevice_register_all();
+}
 
 - (instancetype)init {
     self = [super init];
@@ -59,8 +68,15 @@
     const char *pcm_path = [self.path cStringUsingEncoding:NSString.defaultCStringEncoding];
     SDLPlayer player = SDLPlayer();
     player.initSDL();
-    player.play_file(pcm_path);
+    player.play_pcm(pcm_path);
 }
 
+- (void)playWAV {
+    NSString *wavPath = [self.path.stringByDeletingPathExtension stringByAppendingPathExtension:@"wav"];
+    const char *wav_path = [wavPath cStringUsingEncoding:NSString.defaultCStringEncoding];
+    SDLPlayer player = SDLPlayer();
+    player.initSDL();
+    player.play_wav(wav_path);
+}
 
 @end

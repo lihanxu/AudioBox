@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var audioRecordButton: UIButton!
     @IBOutlet weak var coverToWavButton: UIButton!
     @IBOutlet weak var playWavButton: UIButton!
-    let presenter: FFmpegPresenter = FFmpegPresenter()
+    let ffPresenter: FFmpegPresenter = FFmpegPresenter()
     var temPath: String?
     
     @IBOutlet weak var playCreatedButton: UIButton!
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
             button.tag = 0
             button.setTitle("Record PCM", for: .normal)
             DispatchQueue.global().async { [weak self] in
-                self?.presenter.stopRecordPCM()
+                self?.ffPresenter.stopRecordPCM()
             }
         }
     }
@@ -55,17 +55,18 @@ class ViewController: UIViewController {
         guard let temPath = self.temPath else {
             return
         }
-        guard presenter.initDevice() == true else {
+        guard ffPresenter.initDevice() == true else {
             return
         }
-        presenter.startRecordPCM(withPath: temPath)
+        ffPresenter.startRecordPCM(withPath: temPath)
     }
     @IBAction func coverToWavButtonDidClick(_ sender: Any) {
-        presenter.coverToWAV();
+        ffPresenter.coverToWAV();
     }
     
     @IBAction func playWavButtonDidClick(_ sender: Any) {
-        presenter.playPCM();
+//        ffPresenter.playPCM();
+        ffPresenter.playWAV();
     }
     
     // MARK: Create audio

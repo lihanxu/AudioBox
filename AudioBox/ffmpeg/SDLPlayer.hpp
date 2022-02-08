@@ -36,7 +36,8 @@ public:
     uint16_t _samples;
     
     bool initSDL();
-    bool play_file(string file_path);
+    bool play_pcm(string file_path);
+    bool play_wav(string file_path);
     
 private:
     uint16_t bytes_pre_sample;

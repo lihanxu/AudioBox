@@ -37,6 +37,17 @@ bool SDLPlayer::initSDL() {
         cout<< "初始化 SDL 失败: "<< error <<endl;
         return false;
     }
+    return true;
+}
+
+bool SDLPlayer::play_pcm(string file_path) {
+// open file
+    ifstream audioFile(file_path, ios::in);
+    if (audioFile.is_open() == false) {
+        cout<<"error: file_path 打开文件失败！"<<endl;
+        SDL_Quit();
+        return false;
+    }
     
 // open audio
     spec.freq = _sample_rate;
@@ -46,24 +57,13 @@ bool SDLPlayer::initSDL() {
     spec.callback = pull_audio_data;
     spec.userdata = &buffer;
     
-    res = SDL_OpenAudio(&spec, nullptr);
+    int res = SDL_OpenAudio(&spec, nullptr);
     if (res != 0) {
         cout<< "SDL Open Audio Failed!!!" <<endl;
         SDL_Quit();
         return false;
     }
-    return true;
-}
-
-bool SDLPlayer::play_file(string file_path) {
-// open file
-    ifstream audioFile(file_path, ios::in);
-    if (audioFile.is_open() == false) {
-        cout<<"error: file_path 打开文件失败！"<<endl;
-        SDL_CloseAudio();
-        SDL_Quit();
-        return false;
-    }
+    
     // 开始播放
     SDL_PauseAudio(0);
     char data[1024 * 10];
@@ -80,11 +80,55 @@ bool SDLPlayer::play_file(string file_path) {
             break;
         }
         buffer.data = (uint8_t *)data;
-        SDL_Delay(20);
+//        SDL_Delay(20);
     }
     audioFile.close();
     SDL_CloseAudio();
     SDL_Quit();
+    return true;
+}
+
+bool SDLPlayer::play_wav(string file_path) {
+    Uint8 *data;
+    Uint32 len;
+    SDL_AudioSpec spec;
+    if (!SDL_LoadWAV(file_path.c_str(), &spec, &data, &len)) {
+        cout<< "SDL load wav failed: "<< SDL_GetError() <<endl;
+        SDL_Quit();
+        return false;
+    }
+    spec.callback = pull_audio_data;
+    AudioBuffer buffer;
+    buffer.len = len;
+    buffer.data = data;
+    spec.userdata = &buffer;
+    // 打开设备
+    if (SDL_OpenAudio(&spec, nullptr)) {
+        cout<< "SDL_OpenAudio error:" << SDL_GetError() << endl;
+        SDL_FreeWAV(data);
+        SDL_Quit();
+        return false;
+    }
+    // 开始播放
+    SDL_PauseAudio(0);
+    while (!isInterruptionRequested()) {
+        if (buffer.len > 0) {
+            SDL_Delay(10);
+            continue;
+        }
+        // 每一个样本的大小
+        int size = spec.channels * SDL_AUDIO_BITSIZE(spec.format) / 8;
+        // 最后一次播放的样本数量
+        int samples = buffer.pullLen / size;
+        // 最后一次播放的时长
+        int ms = samples * 1000 / spec.freq;
+        SDL_Delay(ms);
+        break;
+    }
+    SDL_FreeWAV(data);
+    SDL_CloseAudio();
+    SDL_Quit();
+    
     return true;
 }
 
@@ -98,7 +142,7 @@ void pull_audio_data(void *userdata, Uint8 *stream, int len) {
     printf("%d\n", len);
     // 去除缓存信息
     SDLPlayer::AudioBuffer *buffer = (SDLPlayer::AudioBuffer *)userdata;
-    if (buffer->len == 0) return;
+    if (buffer->len <= 0) return;
     buffer->pullLen = (len > buffer->len) ? buffer->len : len;
     
     // 填充数据
