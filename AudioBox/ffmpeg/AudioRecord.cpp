@@ -6,87 +6,137 @@
 //
 
 #include "AudioRecord.hpp"
+#include <string>
 #include <iostream>
+#include <thread>
 #include <fstream>
 #include <unistd.h>
 extern "C" {
     #include <libavcodec/avcodec.h>
     #include <libavutil/avutil.h>
+    #include <libavformat/avformat.h>
 }
+
+using namespace std;
 
 extern void showSpec(AVFormatContext *ctx);
 extern void showDevice();
 
-bool AudioRecord::initDevice() {
-//    showDevice();
-    AVInputFormat *fmt = av_find_input_format("avfoundation");
-    if (fmt == nullptr) {
-        cout<<"error: 没有找到输入格式！！！"<<endl;
-        return false;
+class AudioRecord::AudioRecordImpl {
+    
+public:
+    AudioRecordImpl() {
+        m_running = false;
+        m_ctx = nullptr;
+    }
+    ~AudioRecordImpl() {
+        // 关闭设备
+        m_running = false;
+        avformat_close_input(&m_ctx);
     }
     
-    ctx = nullptr;
-    int ret = avformat_open_input(&ctx, ":0", fmt, NULL);
-    if (ret < 0) {
-        char errbuf[1024] = {0};
-        av_strerror(ret, errbuf, sizeof (errbuf));
-        cout<<"error: 打开设备失败！"<< errbuf <<endl;
-        return false;
+private:
+    bool m_running;
+    AVFormatContext *m_ctx;
+    ofstream m_outFile;
+    thread m_threadRecord;
+    
+public:
+    bool startRecordAudio(const char *path) {
+        initDevice();
+        if (m_ctx == nullptr) {
+            cout<<"error: 设备没有初始化！"<<endl;
+            return false;
+        }
+        // 打开输出路径文件
+        m_outFile = ofstream(path, ios::out | ios::trunc);
+        if (m_outFile.is_open() == false) {
+            cout<<"error: 打开文件失败！"<<endl;
+            return false;
+        }
+        m_running = true;
+        thread t(&AudioRecordImpl::recordAudio, this);
+        t.detach();
+        return true;
     }
-    showSpec(ctx);
-    return true;
+
+    void stopRecordAudio() {
+        if (m_running == false) {
+            return;
+        }
+        m_running = false;
+        avformat_close_input(&m_ctx);
+    }
+    
+private:
+   bool initDevice(){
+    //    showDevice();
+        AVInputFormat *fmt = av_find_input_format("avfoundation");
+        if (fmt == nullptr) {
+            cout<<"error: 没有找到输入格式！！！"<<endl;
+            return false;
+        }
+
+        int ret = avformat_open_input(&m_ctx, ":0", fmt, NULL);
+        if (ret < 0) {
+            char errbuf[1024] = {0};
+            av_strerror(ret, errbuf, sizeof (errbuf));
+            cout<<"error: 打开设备失败！"<< errbuf <<endl;
+            return false;
+        }
+        showSpec(m_ctx);
+        return true;
+    }
+    
+    void recordAudio() {
+        int ret = 0;
+        // 数据包
+        AVPacket *packet = av_packet_alloc();
+        while (m_running) {
+            // 从设备中采集数据
+            ret = av_read_frame(m_ctx, packet);
+            if (ret == 0) {
+                // 将采集的数据写入文件
+                m_outFile.write((const char *)packet->data, packet->size);
+                cout<< "did write packet size: "<< packet->size <<endl;
+                // 释放资源
+                av_packet_unref(packet);
+            } else if (ret == AVERROR(EAGAIN)) { // 资源临时不可用
+                usleep(10 * 1000);
+//                cout<< "error: EAGAIN" <<endl;
+                continue;
+            } else { // 出错了
+                char errbuf[1024];
+                av_strerror(ret, errbuf, sizeof(errbuf));
+                cout<< "av_read_frame error" << errbuf << ret <<endl;
+                break;
+            }
+        }
+        // 释放资源
+        av_packet_free(&packet);
+        // 关闭文件
+        m_outFile.close();
+        cout<< "record audio finish!!" <<endl;
+    }
+};
+
+// MARK: AudioRecord
+
+AudioRecord::AudioRecord() {
+    m_impl = make_unique<AudioRecordImpl>();
 }
 
-bool AudioRecord::startRecordAudio(string path) {
-    if (ctx == nullptr) {
-        cout<<"error: 设备没有初始化！"<<endl;
-        return false;
-    }
-    // 打开输出路径文件
-    ofstream file(path, ios::out | ios::trunc);
-    if (file.is_open() == false) {
-        cout<<"error: 打开文件失败！"<<endl;
-        avformat_close_input(&ctx);
-        return false;
-    }
-    int ret = 0;
-    runing = true;
-    // 数据包
-    AVPacket *packet = av_packet_alloc();
-    do {
-        // 从设备中采集数据
-        ret = av_read_frame(ctx, packet);
-        if (ret == 0) {
-            // 将采集的数据写入文件
-            file.write((const char *)packet->data, packet->size);
-            cout<< "did write packet size: "<< packet->size <<endl;
-            // 释放资源
-            av_packet_unref(packet);
-        } else if (ret == AVERROR(EAGAIN)) { // 资源临时不可用
-            usleep(10 * 1000);
-            cout<< "error: EAGAIN" <<endl;
-            continue;
-        } else { // 出错了
-            char errbuf[1024];
-            av_strerror(ret, errbuf, sizeof(errbuf));
-            cout<< "av_read_frame error" << errbuf << ret <<endl;
-            break;
-        }
-    } while (runing);
-    // 关闭文件
-    file.close();
-    // 释放资源
-    av_packet_free(&packet);
-    // 关闭设备
-    avformat_close_input(&ctx);
-    cout<< "record audio finish!!" <<endl;
-    return true;
+AudioRecord::~AudioRecord() {
+    
+}
+
+bool AudioRecord::startRecordAudio(const char *path) {
+    return m_impl->startRecordAudio(path);
 }
 
 void AudioRecord::stopRecordAudio() {
-    runing = false;
+    m_impl->stopRecordAudio();
 }
-
 
 void showSpec(AVFormatContext *ctx) {
     int count = ctx->nb_streams;
@@ -119,5 +169,4 @@ void showDevice() {
         printf("Couldn't open input stream.\n");
         return ;
     }
-    
 }

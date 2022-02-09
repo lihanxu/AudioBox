@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AudioCreateViewController" customModule="AudioBox" customModuleProvider="target">
+            <connections>
+                <outlet property="frequencySlider" destination="Rsx-ra-bGi" id="PEE-7G-l0s"/>
+                <outlet property="frequencyValueLabel" destination="byU-Ks-MsT" id="oBL-z1-fe1"/>
+                <outlet property="playButton" destination="NOO-yP-JkM" id="e4t-SJ-tKH"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="440" minValue="20" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Rsx-ra-bGi">
+                    <rect key="frame" x="18" y="144" width="288" height="31"/>
+                    <connections>
+                        <action selector="frequencySliderValueChanged:" destination="-1" eventType="valueChanged" id="Kvy-VB-Xjy"/>
+                    </connections>
+                </slider>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="440Hz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byU-Ks-MsT">
+                    <rect key="frame" x="324" y="148.5" width="70" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="01W-Mz-CQC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOO-yP-JkM">
+                    <rect key="frame" x="181.5" y="194" width="51" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Play"/>
+                    <connections>
+                        <action selector="playButtonDidClick:" destination="-1" eventType="touchUpInside" id="hDU-Ca-vX9"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="byU-Ks-MsT" firstAttribute="leading" secondItem="Rsx-ra-bGi" secondAttribute="trailing" constant="20" id="08t-YA-svx"/>
+                <constraint firstItem="byU-Ks-MsT" firstAttribute="centerY" secondItem="Rsx-ra-bGi" secondAttribute="centerY" id="7pC-J6-yyk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="byU-Ks-MsT" secondAttribute="trailing" constant="20" id="9nw-sN-ULe"/>
+                <constraint firstItem="Rsx-ra-bGi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Cmf-VP-0Hr"/>
+                <constraint firstItem="NOO-yP-JkM" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ROz-Pf-pz7"/>
+                <constraint firstItem="Rsx-ra-bGi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="YTY-lk-oqi"/>
+                <constraint firstItem="NOO-yP-JkM" firstAttribute="top" secondItem="Rsx-ra-bGi" secondAttribute="bottom" constant="20" id="eu6-y7-hY4"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="126"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -11,15 +11,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FFmpegPresenter : NSObject
 
-- (void)startRecordPCMWithPath:(NSString *)path;
+- (BOOL)startRecordPCMWithPath:(NSString *)path;
 - (void)stopRecordPCM;
+- (BOOL)playRecordedPCM;
 
-- (void)coverToWAV;
+- (void)encodePCM:(NSString *)pcmPath ToWAV:(NSString *)wavPath;
 
-- (void)playPCM;
-- (void)playWAV;
+- (BOOL)playWAV:(NSString *)wavPath;
+- (void)stopPlay;
 
-- (void)resamlePCM:(NSString *)path;
+- (void)resamlePCM:(NSString *)path toSampleRate:(NSInteger)sampleRate saveTo:(NSString *)savePath;
+- (BOOL)playResamplePCM:(NSString *)path sampleRate:(NSInteger)sampleRate;
 
 @end
 

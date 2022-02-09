@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PCMResampleViewController" customModule="AudioBox" customModuleProvider="target">
+            <connections>
+                <outlet property="button36" destination="KDr-VL-Ovq" id="EfM-Ko-G2D"/>
+                <outlet property="button48" destination="RCI-lA-hlP" id="dEE-UF-LMs"/>
+                <outlet property="button96" destination="hSW-kE-b5i" id="TJx-KA-J3e"/>
+                <outlet property="desLabel" destination="0vp-us-hXW" id="ucY-Qh-fdD"/>
+                <outlet property="playButton" destination="5sh-SL-Lk9" id="bTG-54-fmn"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vp-us-hXW">
+                    <rect key="frame" x="186" y="437.5" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDr-VL-Ovq">
+                    <rect key="frame" x="20" y="478.5" width="71" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="36 kHz"/>
+                    <connections>
+                        <action selector="resampleButtonDidClick:" destination="-1" eventType="touchUpInside" id="i2l-OE-6N5"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCI-lA-hlP">
+                    <rect key="frame" x="111" y="478.5" width="71" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="48 kHz"/>
+                    <connections>
+                        <action selector="resampleButtonDidClick:" destination="-1" eventType="touchUpInside" id="5zh-5Y-KN1"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSW-kE-b5i">
+                    <rect key="frame" x="202" y="478.5" width="71" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="96 kHz"/>
+                    <connections>
+                        <action selector="resampleButtonDidClick:" destination="-1" eventType="touchUpInside" id="cKq-M1-EDm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sh-SL-Lk9">
+                    <rect key="frame" x="181.5" y="529.5" width="51" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Play"/>
+                    <connections>
+                        <action selector="playButtonDidClick:" destination="-1" eventType="touchUpInside" id="koH-zf-cHb"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="5sh-SL-Lk9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="603-LR-ypL"/>
+                <constraint firstItem="RCI-lA-hlP" firstAttribute="leading" secondItem="KDr-VL-Ovq" secondAttribute="trailing" constant="20" id="DyO-83-9W9"/>
+                <constraint firstItem="hSW-kE-b5i" firstAttribute="leading" secondItem="RCI-lA-hlP" secondAttribute="trailing" constant="20" id="Qnk-Fd-wwa"/>
+                <constraint firstItem="KDr-VL-Ovq" firstAttribute="top" secondItem="0vp-us-hXW" secondAttribute="bottom" constant="20" id="Zx4-w4-QvI"/>
+                <constraint firstItem="hSW-kE-b5i" firstAttribute="centerY" secondItem="KDr-VL-Ovq" secondAttribute="centerY" id="jvn-wj-wti"/>
+                <constraint firstItem="0vp-us-hXW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="nHV-zH-QnI"/>
+                <constraint firstItem="5sh-SL-Lk9" firstAttribute="top" secondItem="RCI-lA-hlP" secondAttribute="bottom" constant="20" id="pvf-IT-JAU"/>
+                <constraint firstItem="RCI-lA-hlP" firstAttribute="centerY" secondItem="KDr-VL-Ovq" secondAttribute="centerY" id="rCq-Bh-HOu"/>
+                <constraint firstItem="KDr-VL-Ovq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="wWP-zw-dzT"/>
+                <constraint firstItem="0vp-us-hXW" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="x3Q-UQ-XQj"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="72"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

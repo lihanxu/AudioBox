@@ -20,6 +20,10 @@
 
 @implementation EarsBack
 
+- (void)dealloc {
+    [self stop];
+}
+
 - (instancetype)init
 {
     self = [super init];

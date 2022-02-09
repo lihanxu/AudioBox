@@ -1,124 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KFA-6b-Xg0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Root View Controller-->
+        <scene sceneID="fyt-Ta-2qt">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AudioBox" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController id="lzH-9V-SUd" customClass="RootTableViewController" customModule="AudioBox" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="yAn-k6-NUy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Bc-en-vzW">
-                                <rect key="frame" x="20" y="64" width="105" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Record PCM"/>
-                                <connections>
-                                    <action selector="audioRecordButtonDidClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zB3-T6-SD4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17u-Lm-Rrk">
-                                <rect key="frame" x="145" y="64" width="113" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Cover to WAV"/>
-                                <connections>
-                                    <action selector="coverToWavButtonDidClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="unX-VK-hQh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FND-hv-Rle">
-                                <rect key="frame" x="278" y="64" width="51" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Play"/>
-                                <connections>
-                                    <action selector="playWavButtonDidClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VoS-Z3-ejb"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgN-ys-AaW">
-                                <rect key="frame" x="244" y="114.5" width="107" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Play Created"/>
-                                <connections>
-                                    <action selector="playCreatedButtonDidClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Am-j8-yb5"/>
-                                </connections>
-                            </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="440" minValue="20" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="HTX-7j-vtT">
-                                <rect key="frame" x="18" y="115" width="118" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="114" id="bPG-QK-Mjj"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="frequencySliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="b1x-eh-Ffc"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="440Hz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iw9-kG-uco">
-                                <rect key="frame" x="154" y="119.5" width="70" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="xla-WF-bOy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSz-Qi-P4Q">
-                                <rect key="frame" x="20" y="160.5" width="88" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Ears Back"/>
-                                <connections>
-                                    <action selector="earsBackButtonDidClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wDz-j4-EKi"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jt-bo-qVT">
-                                <rect key="frame" x="145" y="160.5" width="116" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="resample pcm"/>
-                                <connections>
-                                    <action selector="resamplePCMButtonDidClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gub-Qz-Dt9"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="HTX-7j-vtT" firstAttribute="top" secondItem="7Bc-en-vzW" secondAttribute="bottom" constant="20" id="05i-7b-KTb"/>
-                            <constraint firstItem="lSz-Qi-P4Q" firstAttribute="top" secondItem="iw9-kG-uco" secondAttribute="bottom" constant="20" id="0XS-4F-7dT"/>
-                            <constraint firstItem="7Bc-en-vzW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="5Do-fU-nPM"/>
-                            <constraint firstItem="FND-hv-Rle" firstAttribute="centerY" secondItem="7Bc-en-vzW" secondAttribute="centerY" id="9Ag-d4-dKN"/>
-                            <constraint firstItem="FND-hv-Rle" firstAttribute="leading" secondItem="17u-Lm-Rrk" secondAttribute="trailing" constant="20" id="CZ9-J6-fZx"/>
-                            <constraint firstItem="OgN-ys-AaW" firstAttribute="leading" secondItem="iw9-kG-uco" secondAttribute="trailing" constant="20" id="JpL-lH-DAA"/>
-                            <constraint firstItem="HTX-7j-vtT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="L8l-eM-fgV"/>
-                            <constraint firstItem="1Jt-bo-qVT" firstAttribute="centerY" secondItem="lSz-Qi-P4Q" secondAttribute="centerY" id="Xvm-zt-TmU"/>
-                            <constraint firstItem="OgN-ys-AaW" firstAttribute="centerY" secondItem="HTX-7j-vtT" secondAttribute="centerY" id="cmP-QZ-sih"/>
-                            <constraint firstItem="lSz-Qi-P4Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dZ3-oK-XHF"/>
-                            <constraint firstItem="lSz-Qi-P4Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="duW-bs-rDP"/>
-                            <constraint firstItem="17u-Lm-Rrk" firstAttribute="leading" secondItem="7Bc-en-vzW" secondAttribute="trailing" constant="20" id="gTV-82-gHv"/>
-                            <constraint firstItem="iw9-kG-uco" firstAttribute="leading" secondItem="HTX-7j-vtT" secondAttribute="trailing" constant="20" id="o93-z9-qjL"/>
-                            <constraint firstItem="17u-Lm-Rrk" firstAttribute="centerY" secondItem="7Bc-en-vzW" secondAttribute="centerY" id="ooo-py-GoO"/>
-                            <constraint firstItem="7Bc-en-vzW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="pBE-1e-Rg2"/>
-                            <constraint firstItem="iw9-kG-uco" firstAttribute="centerY" secondItem="HTX-7j-vtT" secondAttribute="centerY" id="pzc-zs-EwR"/>
-                            <constraint firstItem="1Jt-bo-qVT" firstAttribute="leading" secondItem="lSz-Qi-P4Q" secondAttribute="trailing" constant="37" id="uif-tg-Ubs"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="audioRecordButton" destination="7Bc-en-vzW" id="IIY-Vc-A7W"/>
-                        <outlet property="coverToWavButton" destination="17u-Lm-Rrk" id="dRX-se-zAU"/>
-                        <outlet property="earsBackButton" destination="lSz-Qi-P4Q" id="Jy3-YC-XFw"/>
-                        <outlet property="frequencySlider" destination="HTX-7j-vtT" id="93c-ia-mfO"/>
-                        <outlet property="frequencyValueLabel" destination="iw9-kG-uco" id="to3-0f-gWc"/>
-                        <outlet property="playCreatedButton" destination="OgN-ys-AaW" id="QFe-Jb-E8O"/>
-                        <outlet property="playWavButton" destination="FND-hv-Rle" id="3tY-qv-exh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AudioFunctionsCell" id="gsd-2V-f35">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gsd-2V-f35" id="lBt-QI-imm">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lzH-9V-SUd" id="aNe-8u-qLl"/>
+                            <outlet property="delegate" destination="lzH-9V-SUd" id="Ix8-eI-4o1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="9Ez-C7-wvA"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RYi-KZ-7fp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133" y="110"/>
+            <point key="canvasLocation" x="-499" y="-52"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="omo-df-8Zb">
+            <objects>
+                <navigationController id="KFA-6b-Xg0" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yff-ja-ywr">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lzH-9V-SUd" kind="relationship" relationship="rootViewController" id="IdE-vL-nmg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gn7-kn-i5C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1372" y="-52"/>
         </scene>
     </scenes>
     <resources>

@@ -88,9 +88,9 @@ void AudioResample::resampleAudio(ResampleAudioSpec &in, ResampleAudioSpec &out)
     }
     
     // 检查一下输出缓冲区是否还有残留的样本（已经重采样过的，转换过的）
-//    while ((ret = swr_convert(ctx, outData, outSamples, nullptr, 0)) > 0) {
-//        outFile.write((char *) outData[0], ret * outBytesPerSample);
-//    }
+    while ((ret = swr_convert(ctx, outData, outSamples, nullptr, 0)) > 0) {
+        outFile.write((char *) outData[0], ret * outBytesPerSample);
+    }
     cout<< "swr_convert finish!!!" <<endl;
 
 failed:

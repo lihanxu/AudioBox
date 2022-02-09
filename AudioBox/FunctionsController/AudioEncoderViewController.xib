@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AudioEncoderViewController" customModule="AudioBox" customModuleProvider="target">
+            <connections>
+                <outlet property="desLabel" destination="TGP-vZ-Azb" id="X8J-uK-Lzi"/>
+                <outlet property="playButton" destination="bFy-WE-btg" id="zC6-El-6sf"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wavButton" destination="qCU-89-eZm" id="eKR-ax-j5u"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGP-vZ-Azb">
+                    <rect key="frame" x="186" y="437.5" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCU-89-eZm">
+                    <rect key="frame" x="20" y="478.5" width="74" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="To WAV"/>
+                    <connections>
+                        <action selector="wavButtonDidClick:" destination="-1" eventType="touchUpInside" id="3n2-W7-WQ6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-WE-btg">
+                    <rect key="frame" x="181.5" y="529.5" width="51" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Play"/>
+                    <connections>
+                        <action selector="playButtonDidClick:" destination="-1" eventType="touchUpInside" id="EYw-XM-jvn"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="TGP-vZ-Azb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Oqw-mT-NN8"/>
+                <constraint firstItem="bFy-WE-btg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="P82-ox-eEc"/>
+                <constraint firstItem="TGP-vZ-Azb" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="kG3-R2-aws"/>
+                <constraint firstItem="qCU-89-eZm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="o04-Jg-90J"/>
+                <constraint firstItem="bFy-WE-btg" firstAttribute="top" secondItem="qCU-89-eZm" secondAttribute="bottom" constant="20" id="xYA-hi-s4W"/>
+                <constraint firstItem="qCU-89-eZm" firstAttribute="top" secondItem="TGP-vZ-Azb" secondAttribute="bottom" constant="20" id="ySh-La-Vmt"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="72"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

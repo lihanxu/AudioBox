@@ -9,24 +9,20 @@
 #define AudioRecord_hpp
 
 #include <stdio.h>
-#include <string>
-extern "C" {
-    #include <libavformat/avformat.h>
-}
-
-using namespace std;
+#include <memory>
 
 class AudioRecord {
     
 public:
-    bool initDevice();
-    bool startRecordAudio(string path);
+    AudioRecord();
+    ~AudioRecord();
+    bool startRecordAudio(const char *path);
     void stopRecordAudio();
 
 private:
-    bool runing;
-    AVFormatContext *ctx;
-    void closeInput();
+    class AudioRecordImpl;
+    std::unique_ptr<AudioRecordImpl> m_impl;
+
 };
 
 #endif /* AudioRecord_hpp */

@@ -8,44 +8,31 @@
 #ifndef SDLPlayer_hpp
 #define SDLPlayer_hpp
 
-#include <stdio.h>
-#include <string>
-#include <libSDL2/SDL.h>
+#include <memory>
 
 using namespace std;
 
 class SDLPlayer {
     
 public:
-    typedef struct AudioBufferS {
-        int len = 0;
-        int pullLen = 0;
-        uint8_t *data = nullptr;
-    } AudioBuffer;
+    typedef struct PCMHeader {
+        // 采样率
+        uint32_t sample_rate;
+        // 采样格式
+        uint32_t sample_format;
+        // 声道数
+        uint16_t channels;
+    } PCMHeader;
     
     SDLPlayer();
-    // 采样率
-    uint32_t _sample_rate;
-    // 采样格式
-    uint32_t _sample_format;
-    // 采样大小
-    uint16_t _sample_size;
-    // 声道数
-    uint16_t _channels;
-    // 音频缓冲区的样本数量
-    uint16_t _samples;
+    ~SDLPlayer();
     
-    bool initSDL();
-    bool play_pcm(string file_path);
-    bool play_wav(string file_path);
+    bool playPCM(const char *file_path, PCMHeader &header);
+    bool playWAV(const char * file_path);
+    void stopPlay();
     
 private:
-    uint16_t bytes_pre_sample;
-    
-    SDL_AudioSpec spec;
-    AudioBuffer buffer;
-    uint32_t buffer_size;
-    
-    bool isInterruptionRequested();
+    class SDLPlayerImpl;
+    std::unique_ptr<SDLPlayerImpl> m_impl;
 };
 #endif /* SDLPlayer_hpp */
