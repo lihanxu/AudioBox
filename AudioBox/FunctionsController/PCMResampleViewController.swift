@@ -101,10 +101,7 @@ class PCMResampleViewController: UIViewController {
     }
     
     private func startPlay() {
-        guard let path = currentPath else {
-            return
-        }
-        let ret: Bool = ffPresenter.playResamplePCM(path, sampleRate: currentSampleRate * 1000)
+        let ret: Bool = ffPresenter.playResamplePCM()
         if ret == false {
             showError()
             return

@@ -17,11 +17,12 @@ class AudioEncoderViewController: UIViewController {
     
     private enum EncodeType {
         case WAV
-        case ACC
+        case AAC
     }
 
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var wavButton: UIButton!
+    @IBOutlet weak var aacButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     
     private var currentState: State = .idle {
@@ -44,21 +45,25 @@ class AudioEncoderViewController: UIViewController {
         case .idle:
             desLabel.text = "Try click encode button ~"
             wavButton.isEnabled = true
+            aacButton.isEnabled = true
             playButton.isEnabled = false
             break
         case .encoding:
             desLabel.text = "Encoding, please wait..."
             wavButton.isEnabled = false
+            aacButton.isEnabled = false
             playButton.isEnabled = false
             break
         case .ready:
             desLabel.text = "Encode done, tye play it!"
             wavButton.isEnabled = true
+            aacButton.isEnabled = true
             playButton.isEnabled = true
             break
         case .playing:
             desLabel.text = "playing..."
             wavButton.isEnabled = false
+            aacButton.isEnabled = false
             playButton.isEnabled = true
             playButton.setTitle("Pause", for: .normal)
             break
@@ -68,6 +73,12 @@ class AudioEncoderViewController: UIViewController {
     @IBAction private func wavButtonDidClick(_ sender: Any) {
         if currentState == .idle || currentState == .ready {
             startEncodeWAV()
+        }
+    }
+    
+    @IBAction func aacButtonDidClick(_ sender: Any) {
+        if currentState == .idle || currentState == .ready {
+            startEncodeAAC()
         }
     }
     
@@ -91,14 +102,26 @@ class AudioEncoderViewController: UIViewController {
         currentState = .ready
     }
     
+    private func startEncodeAAC() {
+        guard let pcmPath: String = Bundle.main.path(forResource: "fascinated", ofType: "pcm") else {
+            print("error: can not find pcm resource.")
+            showError()
+            return
+        }
+        let aacPath: String = FileManager.documentsDir() + "/fascinated.aac"
+        currentState = .encoding
+        ffPresenter.encodePCM(pcmPath, toAAC: aacPath)
+        currentState = .ready
+    }
+    
     private func startPlay() {
         var ret: Bool = false
         switch currentEncodeType {
         case .WAV:
             let wavPath: String = FileManager.documentsDir() + "/fascinated.wav"
             ret = ffPresenter.playWAV(wavPath)
-        case .ACC:
-            break
+        case .AAC:
+            return
         }
         guard ret else {
             return

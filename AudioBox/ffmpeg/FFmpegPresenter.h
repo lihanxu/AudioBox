@@ -15,14 +15,18 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)stopRecordPCM;
 - (BOOL)playRecordedPCM;
 
-- (void)encodePCM:(NSString *)pcmPath ToWAV:(NSString *)wavPath;
-
 - (BOOL)playWAV:(NSString *)wavPath;
 - (void)stopPlay;
 
 - (void)resamlePCM:(NSString *)path toSampleRate:(NSInteger)sampleRate saveTo:(NSString *)savePath;
-- (BOOL)playResamplePCM:(NSString *)path sampleRate:(NSInteger)sampleRate;
+- (BOOL)playResamplePCM;
 
+
+- (void)encodePCM:(NSString *)pcmPath ToWAV:(NSString *)wavPath;
+- (void)encodePCM:(NSString *)pcmPath ToAAC:(NSString *)aacPath;
+
+- (void)decodeAAC:(NSString *)aacPath saveTo:(NSString *)pcmPath;
+- (BOOL)playDecodedPCM;
 @end
 
 NS_ASSUME_NONNULL_END

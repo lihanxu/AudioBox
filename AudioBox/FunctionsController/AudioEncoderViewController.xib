@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AudioEncoderViewController" customModule="AudioBox" customModuleProvider="target">
             <connections>
+                <outlet property="aacButton" destination="9ss-Vr-wI3" id="8Gl-zg-e7d"/>
                 <outlet property="desLabel" destination="TGP-vZ-Azb" id="X8J-uK-Lzi"/>
                 <outlet property="playButton" destination="bFy-WE-btg" id="zC6-El-6sf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -44,12 +45,22 @@
                         <action selector="playButtonDidClick:" destination="-1" eventType="touchUpInside" id="EYw-XM-jvn"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ss-Vr-wI3">
+                    <rect key="frame" x="114" y="478.5" width="72" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="To AAC"/>
+                    <connections>
+                        <action selector="aacButtonDidClick:" destination="-1" eventType="touchUpInside" id="UM5-WI-TcE"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="9ss-Vr-wI3" firstAttribute="centerY" secondItem="qCU-89-eZm" secondAttribute="centerY" id="JyM-wy-qGU"/>
                 <constraint firstItem="TGP-vZ-Azb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Oqw-mT-NN8"/>
                 <constraint firstItem="bFy-WE-btg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="P82-ox-eEc"/>
+                <constraint firstItem="9ss-Vr-wI3" firstAttribute="leading" secondItem="qCU-89-eZm" secondAttribute="trailing" constant="20" id="i6r-Xu-kqI"/>
                 <constraint firstItem="TGP-vZ-Azb" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="kG3-R2-aws"/>
                 <constraint firstItem="qCU-89-eZm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="o04-Jg-90J"/>
                 <constraint firstItem="bFy-WE-btg" firstAttribute="top" secondItem="qCU-89-eZm" secondAttribute="bottom" constant="20" id="xYA-hi-s4W"/>

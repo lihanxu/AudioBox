@@ -10,6 +10,9 @@
 
 #include <stdio.h>
 #include <string>
+extern "C" {
+#include <libavcodec/avcodec.h>
+}
 
 using namespace std;
 
@@ -48,11 +51,18 @@ typedef struct WAVFileHeader {
     uint32_t dataChunkDataSize;
 } WAVHeader;
 
+typedef struct {
+    const char *filename;
+    int sampleRate;
+    AVSampleFormat sampleFmt;
+    int chLayout;
+} AudioEncodeSpec;
+
 class AudioEncoder {
 public:
     AudioEncoder();
     static bool pcm2wav(string pcmPath, WAVHeader &header, string wavPath);
-    
+    static void pcm2aac(AudioEncodeSpec &in, const char *outFilename);
 };
 
 #endif /* AudioEncoder_hpp */

@@ -55,6 +55,10 @@
 		9AB7290327B3C65E00CF279D /* EarsBackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7290127B3C65E00CF279D /* EarsBackViewController.xib */; };
 		9AB7290727B3C8F800CF279D /* AudioCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7290527B3C8F700CF279D /* AudioCreateViewController.swift */; };
 		9AB7290827B3C8F800CF279D /* AudioCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7290627B3C8F700CF279D /* AudioCreateViewController.xib */; };
+		9AB7290B27B4C95400CF279D /* AudioDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7290927B4C95400CF279D /* AudioDecoder.cpp */; };
+		9AB7290D27B4E39300CF279D /* fascinated.aac in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7290C27B4E39200CF279D /* fascinated.aac */; };
+		9AB7291027B4E5AF00CF279D /* AudioDecoderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7290E27B4E5AF00CF279D /* AudioDecoderViewController.swift */; };
+		9AB7291127B4E5AF00CF279D /* AudioDecoderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7290F27B4E5AF00CF279D /* AudioDecoderViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -314,6 +318,11 @@
 		9AB7290127B3C65E00CF279D /* EarsBackViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarsBackViewController.xib; sourceTree = "<group>"; };
 		9AB7290527B3C8F700CF279D /* AudioCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCreateViewController.swift; sourceTree = "<group>"; };
 		9AB7290627B3C8F700CF279D /* AudioCreateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioCreateViewController.xib; sourceTree = "<group>"; };
+		9AB7290927B4C95400CF279D /* AudioDecoder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioDecoder.cpp; sourceTree = "<group>"; };
+		9AB7290A27B4C95400CF279D /* AudioDecoder.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AudioDecoder.hpp; sourceTree = "<group>"; };
+		9AB7290C27B4E39200CF279D /* fascinated.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = fascinated.aac; sourceTree = "<group>"; };
+		9AB7290E27B4E5AF00CF279D /* AudioDecoderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDecoderViewController.swift; sourceTree = "<group>"; };
+		9AB7290F27B4E5AF00CF279D /* AudioDecoderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioDecoderViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,6 +402,8 @@
 				9A94DBB527B274C300956E0E /* lib */,
 				9A07FE3E27A3EA9300313EB7 /* AudioEncoder.cpp */,
 				9A07FE3F27A3EA9300313EB7 /* AudioEncoder.hpp */,
+				9AB7290927B4C95400CF279D /* AudioDecoder.cpp */,
+				9AB7290A27B4C95400CF279D /* AudioDecoder.hpp */,
 				9A07FE3A27A3EA9200313EB7 /* AudioRecord.cpp */,
 				9A07FE3C27A3EA9200313EB7 /* AudioRecord.hpp */,
 				9A68DF6927B0FEBE00F54BE7 /* SDLPlayer.cpp */,
@@ -738,6 +749,8 @@
 				9AB728F827B3A0E100CF279D /* PCMResampleViewController.xib */,
 				9AB728F027B3781100CF279D /* AudioEncoderViewController.swift */,
 				9AB728F127B3781100CF279D /* AudioEncoderViewController.xib */,
+				9AB7290E27B4E5AF00CF279D /* AudioDecoderViewController.swift */,
+				9AB7290F27B4E5AF00CF279D /* AudioDecoderViewController.xib */,
 				9AB7290027B3C65E00CF279D /* EarsBackViewController.swift */,
 				9AB7290127B3C65E00CF279D /* EarsBackViewController.xib */,
 				9AB7290527B3C8F700CF279D /* AudioCreateViewController.swift */,
@@ -750,6 +763,7 @@
 			isa = PBXGroup;
 			children = (
 				9AB728F527B38E6400CF279D /* fascinated.pcm */,
+				9AB7290C27B4E39200CF279D /* fascinated.aac */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -823,11 +837,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A07FD6F27A3E5AE00313EB7 /* LaunchScreen.storyboard in Resources */,
+				9AB7290D27B4E39300CF279D /* fascinated.aac in Resources */,
 				9A07FD6C27A3E5AE00313EB7 /* Assets.xcassets in Resources */,
 				9A94DC9827B2AB6500956E0E /* PCMRecordViewController.xib in Resources */,
 				9AB728F627B38E6400CF279D /* fascinated.pcm in Resources */,
 				9A07FD6A27A3E5AC00313EB7 /* Main.storyboard in Resources */,
 				9AB728F327B3781100CF279D /* AudioEncoderViewController.xib in Resources */,
+				9AB7291127B4E5AF00CF279D /* AudioDecoderViewController.xib in Resources */,
 				9AB7290827B3C8F800CF279D /* AudioCreateViewController.xib in Resources */,
 				9AB7290327B3C65E00CF279D /* EarsBackViewController.xib in Resources */,
 				9AB728FA27B3A0E100CF279D /* PCMResampleViewController.xib in Resources */,
@@ -855,7 +871,9 @@
 				9AB728F927B3A0E100CF279D /* PCMResampleViewController.swift in Sources */,
 				9A68DF6B27B0FEBE00F54BE7 /* SDLPlayer.cpp in Sources */,
 				9A07FE3927A3E9C300313EB7 /* KarplusStrongPlayer.m in Sources */,
+				9AB7291027B4E5AF00CF279D /* AudioDecoderViewController.swift in Sources */,
 				9A07FE4227A3EA9300313EB7 /* AudioEncoder.cpp in Sources */,
+				9AB7290B27B4C95400CF279D /* AudioDecoder.cpp in Sources */,
 				9A07FE4127A3EA9300313EB7 /* FFmpegPresenter.mm in Sources */,
 				9AB728F227B3781100CF279D /* AudioEncoderViewController.swift in Sources */,
 			);
