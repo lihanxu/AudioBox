@@ -59,6 +59,11 @@
 		9AB7290D27B4E39300CF279D /* fascinated.aac in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7290C27B4E39200CF279D /* fascinated.aac */; };
 		9AB7291027B4E5AF00CF279D /* AudioDecoderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7290E27B4E5AF00CF279D /* AudioDecoderViewController.swift */; };
 		9AB7291127B4E5AF00CF279D /* AudioDecoderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7290F27B4E5AF00CF279D /* AudioDecoderViewController.xib */; };
+		9AB7291327B5ED0F00CF279D /* AudioSpectrumPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7291227B5ED0F00CF279D /* AudioSpectrumPlayer.swift */; };
+		9AB7291627B60B4E00CF279D /* AudioSpectrumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7291427B60B4E00CF279D /* AudioSpectrumViewController.swift */; };
+		9AB7291727B60B4E00CF279D /* AudioSpectrumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7291527B60B4E00CF279D /* AudioSpectrumViewController.xib */; };
+		9AB7291A27B60B9F00CF279D /* SpectrumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7291927B60B9F00CF279D /* SpectrumView.swift */; };
+		9AB7291C27B6137E00CF279D /* fascinated.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7291B27B6137D00CF279D /* fascinated.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -323,6 +328,11 @@
 		9AB7290C27B4E39200CF279D /* fascinated.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = fascinated.aac; sourceTree = "<group>"; };
 		9AB7290E27B4E5AF00CF279D /* AudioDecoderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDecoderViewController.swift; sourceTree = "<group>"; };
 		9AB7290F27B4E5AF00CF279D /* AudioDecoderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioDecoderViewController.xib; sourceTree = "<group>"; };
+		9AB7291227B5ED0F00CF279D /* AudioSpectrumPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSpectrumPlayer.swift; sourceTree = "<group>"; };
+		9AB7291427B60B4E00CF279D /* AudioSpectrumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSpectrumViewController.swift; sourceTree = "<group>"; };
+		9AB7291527B60B4E00CF279D /* AudioSpectrumViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioSpectrumViewController.xib; sourceTree = "<group>"; };
+		9AB7291927B60B9F00CF279D /* SpectrumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrumView.swift; sourceTree = "<group>"; };
+		9AB7291B27B6137D00CF279D /* fascinated.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fascinated.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,6 +457,7 @@
 				9A07FE2F27A3E9C300313EB7 /* ErrorCheck.h */,
 				9A07FE3427A3E9C300313EB7 /* EarsBack.h */,
 				9A07FE3127A3E9C300313EB7 /* EarsBack.m */,
+				9AB7291227B5ED0F00CF279D /* AudioSpectrumPlayer.swift */,
 				9A07FE3027A3E9C300313EB7 /* KarplusStrongPlayer.h */,
 				9A07FE3527A3E9C300313EB7 /* KarplusStrongPlayer.m */,
 			);
@@ -743,6 +754,7 @@
 		9A94DC9427B2AB1100956E0E /* FunctionsController */ = {
 			isa = PBXGroup;
 			children = (
+				9AB7291827B60B8200CF279D /* subViews */,
 				9A94DC9527B2AB6500956E0E /* PCMRecordViewController.swift */,
 				9A94DC9627B2AB6500956E0E /* PCMRecordViewController.xib */,
 				9AB728F727B3A0E100CF279D /* PCMResampleViewController.swift */,
@@ -753,6 +765,8 @@
 				9AB7290F27B4E5AF00CF279D /* AudioDecoderViewController.xib */,
 				9AB7290027B3C65E00CF279D /* EarsBackViewController.swift */,
 				9AB7290127B3C65E00CF279D /* EarsBackViewController.xib */,
+				9AB7291427B60B4E00CF279D /* AudioSpectrumViewController.swift */,
+				9AB7291527B60B4E00CF279D /* AudioSpectrumViewController.xib */,
 				9AB7290527B3C8F700CF279D /* AudioCreateViewController.swift */,
 				9AB7290627B3C8F700CF279D /* AudioCreateViewController.xib */,
 			);
@@ -763,6 +777,7 @@
 			isa = PBXGroup;
 			children = (
 				9AB728F527B38E6400CF279D /* fascinated.pcm */,
+				9AB7291B27B6137D00CF279D /* fascinated.mp3 */,
 				9AB7290C27B4E39200CF279D /* fascinated.aac */,
 			);
 			path = Resource;
@@ -775,6 +790,14 @@
 				9AB728FE27B3B64A00CF279D /* FileManagerEx.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		9AB7291827B60B8200CF279D /* subViews */ = {
+			isa = PBXGroup;
+			children = (
+				9AB7291927B60B9F00CF279D /* SpectrumView.swift */,
+			);
+			path = subViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -844,6 +867,8 @@
 				9A07FD6A27A3E5AC00313EB7 /* Main.storyboard in Resources */,
 				9AB728F327B3781100CF279D /* AudioEncoderViewController.xib in Resources */,
 				9AB7291127B4E5AF00CF279D /* AudioDecoderViewController.xib in Resources */,
+				9AB7291C27B6137E00CF279D /* fascinated.mp3 in Resources */,
+				9AB7291727B60B4E00CF279D /* AudioSpectrumViewController.xib in Resources */,
 				9AB7290827B3C8F800CF279D /* AudioCreateViewController.xib in Resources */,
 				9AB7290327B3C65E00CF279D /* EarsBackViewController.xib in Resources */,
 				9AB728FA27B3A0E100CF279D /* PCMResampleViewController.xib in Resources */,
@@ -859,6 +884,8 @@
 			files = (
 				9A07FE3727A3E9C300313EB7 /* EarsBack.m in Sources */,
 				9A07FE4027A3EA9300313EB7 /* AudioRecord.cpp in Sources */,
+				9AB7291327B5ED0F00CF279D /* AudioSpectrumPlayer.swift in Sources */,
+				9AB7291A27B60B9F00CF279D /* SpectrumView.swift in Sources */,
 				9A2F196327B2220500F1EF1F /* AudioResample.cpp in Sources */,
 				9A07FD6327A3E5AC00313EB7 /* AppDelegate.swift in Sources */,
 				9AB7290727B3C8F800CF279D /* AudioCreateViewController.swift in Sources */,
@@ -871,6 +898,7 @@
 				9AB728F927B3A0E100CF279D /* PCMResampleViewController.swift in Sources */,
 				9A68DF6B27B0FEBE00F54BE7 /* SDLPlayer.cpp in Sources */,
 				9A07FE3927A3E9C300313EB7 /* KarplusStrongPlayer.m in Sources */,
+				9AB7291627B60B4E00CF279D /* AudioSpectrumViewController.swift in Sources */,
 				9AB7291027B4E5AF00CF279D /* AudioDecoderViewController.swift in Sources */,
 				9A07FE4227A3EA9300313EB7 /* AudioEncoder.cpp in Sources */,
 				9AB7290B27B4C95400CF279D /* AudioDecoder.cpp in Sources */,
