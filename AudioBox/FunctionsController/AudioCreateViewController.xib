@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="frequencySlider" destination="Rsx-ra-bGi" id="PEE-7G-l0s"/>
                 <outlet property="frequencyValueLabel" destination="byU-Ks-MsT" id="oBL-z1-fe1"/>
+                <outlet property="karplusButton" destination="Ypy-Ea-or7" id="aQY-12-6ip"/>
                 <outlet property="playButton" destination="NOO-yP-JkM" id="e4t-SJ-tKH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -38,11 +39,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOO-yP-JkM">
-                    <rect key="frame" x="181.5" y="194" width="51" height="31"/>
+                    <rect key="frame" x="204" y="194" width="51" height="31"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Play"/>
                     <connections>
                         <action selector="playButtonDidClick:" destination="-1" eventType="touchUpInside" id="hDU-Ca-vX9"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypy-Ea-or7">
+                    <rect key="frame" x="20" y="194" width="164" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Enable KarplusStrong"/>
+                    <connections>
+                        <action selector="karplusStrongButtonDidClick:" destination="-1" eventType="touchUpInside" id="Vov-Iy-PRY"/>
                     </connections>
                 </button>
             </subviews>
@@ -53,9 +62,11 @@
                 <constraint firstItem="byU-Ks-MsT" firstAttribute="centerY" secondItem="Rsx-ra-bGi" secondAttribute="centerY" id="7pC-J6-yyk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="byU-Ks-MsT" secondAttribute="trailing" constant="20" id="9nw-sN-ULe"/>
                 <constraint firstItem="Rsx-ra-bGi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Cmf-VP-0Hr"/>
-                <constraint firstItem="NOO-yP-JkM" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ROz-Pf-pz7"/>
+                <constraint firstItem="NOO-yP-JkM" firstAttribute="leading" secondItem="Ypy-Ea-or7" secondAttribute="trailing" constant="20" id="SVf-Nb-7SI"/>
+                <constraint firstItem="Ypy-Ea-or7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="WEb-al-i09"/>
                 <constraint firstItem="Rsx-ra-bGi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="YTY-lk-oqi"/>
                 <constraint firstItem="NOO-yP-JkM" firstAttribute="top" secondItem="Rsx-ra-bGi" secondAttribute="bottom" constant="20" id="eu6-y7-hY4"/>
+                <constraint firstItem="NOO-yP-JkM" firstAttribute="centerY" secondItem="Ypy-Ea-or7" secondAttribute="centerY" id="ubn-os-Hli"/>
             </constraints>
             <point key="canvasLocation" x="132" y="126"/>
         </view>

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)stop;
 - (void)start;
+- (void)enableKarplus:(BOOL)enabled;
 - (void)updateFrequency:(double)frequency;
 
 @end

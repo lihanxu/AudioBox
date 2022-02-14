@@ -21,7 +21,7 @@
 @implementation EarsBack
 
 - (void)dealloc {
-    [self stop];
+    AUGraphStop(self->_audioGraph);
 }
 
 - (instancetype)init

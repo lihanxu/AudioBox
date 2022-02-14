@@ -129,7 +129,7 @@ void AudioDecoder::aacDecode(const char *inFilename, AudioDecodeSpec &out) {
         goto end;
     }
     
-// 读取数据
+    // 读取数据
     inLen = (int)inFile.read(inData, IN_DATA_SIZE).gcount();
     while (inLen > 0) {
         // 经过解析器上下文处理
