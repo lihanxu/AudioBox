@@ -14,11 +14,12 @@ class RootTableViewController: UITableViewController {
         case AudioEncoder = "Audio Encoder"
         case AudioDecoder = "Audio Decoder"
         case EarsBack = "Ears Back"
+        case AudioMagician = "Audio Magician"
         case AudioSpectrum = "Audio Spectrum"
         case CreateAudio = "Create Audio"
     }
     
-    let funcsList: Array<Functions> = [.PCM, .PCMResample, .AudioEncoder, .AudioDecoder, .EarsBack, .AudioSpectrum, .CreateAudio]
+    let funcsList: Array<Functions> = [.PCM, .PCMResample, .AudioEncoder, .AudioDecoder, .EarsBack, .AudioMagician, .AudioSpectrum, .CreateAudio]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,8 @@ class RootTableViewController: UITableViewController {
             viewCtr = AudioDecoderViewController(nibName: "AudioDecoderViewController", bundle: nil)
         case .EarsBack:
             viewCtr = EarsBackViewController(nibName: "EarsBackViewController", bundle: nil)
+        case .AudioMagician:
+            viewCtr = AudioChangeViewController(nibName: "AudioChangeViewController", bundle: nil)
         case .AudioSpectrum:
             viewCtr = AudioSpectrumViewController(nibName: "AudioSpectrumViewController", bundle: nil)
         case .CreateAudio:

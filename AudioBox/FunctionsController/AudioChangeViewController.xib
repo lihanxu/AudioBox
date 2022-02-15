@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AudioChangeViewController" customModule="AudioBox" customModuleProvider="target">
+            <connections>
+                <outlet property="echoButton" destination="S6D-Cd-VfW" id="hx0-r6-Hvo"/>
+                <outlet property="fastButton" destination="udJ-gY-0ZW" id="r0L-Pr-8Cn"/>
+                <outlet property="pitchDownButton" destination="Fyx-wT-TV0" id="HS7-Zg-gbd"/>
+                <outlet property="pitchUpButton" destination="0Q1-MF-foP" id="lgy-0F-fY2"/>
+                <outlet property="reverbButton" destination="jJF-R4-7IN" id="H9M-xx-093"/>
+                <outlet property="slowButton" destination="OsX-1K-Gmb" id="K3x-Up-6tL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsX-1K-Gmb">
+                    <rect key="frame" x="96.5" y="361.5" width="55" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Slow"/>
+                    <connections>
+                        <action selector="slowButtonDidClick:" destination="-1" eventType="touchUpInside" id="6Ah-0j-2Pk"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Q1-MF-foP">
+                    <rect key="frame" x="85.5" y="432.5" width="77" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Pitch up"/>
+                    <connections>
+                        <action selector="pitchUpButtonDidClick:" destination="-1" eventType="touchUpInside" id="yKV-OU-gmc"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fyx-wT-TV0">
+                    <rect key="frame" x="242" y="432.5" width="96" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Pitch down"/>
+                    <connections>
+                        <action selector="pitchDownButtonDidClick:" destination="-1" eventType="touchUpInside" id="CXf-dh-H0s"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6D-Cd-VfW">
+                    <rect key="frame" x="95.5" y="503.5" width="57" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Echo"/>
+                    <connections>
+                        <action selector="echoButtonDidClick:" destination="-1" eventType="touchUpInside" id="4v5-vG-pti"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJF-R4-7IN">
+                    <rect key="frame" x="255" y="503.5" width="70" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Reverb"/>
+                    <connections>
+                        <action selector="reverbButtonDidClick:" destination="-1" eventType="touchUpInside" id="mPB-C3-zo4"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udJ-gY-0ZW">
+                    <rect key="frame" x="264" y="361.5" width="52" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Fast"/>
+                    <connections>
+                        <action selector="fastButtonDidClick:" destination="-1" eventType="touchUpInside" id="m6I-jS-Uh6"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="0Q1-MF-foP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="A5m-ai-Lcj"/>
+                <constraint firstItem="S6D-Cd-VfW" firstAttribute="top" secondItem="0Q1-MF-foP" secondAttribute="bottom" constant="40" id="AVz-OX-t0a"/>
+                <constraint firstItem="Fyx-wT-TV0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="1.4" id="Dru-GN-Rec"/>
+                <constraint firstItem="S6D-Cd-VfW" firstAttribute="centerX" secondItem="OsX-1K-Gmb" secondAttribute="centerX" id="G6c-Kl-tWK"/>
+                <constraint firstItem="0Q1-MF-foP" firstAttribute="centerX" secondItem="OsX-1K-Gmb" secondAttribute="centerX" id="Pef-U2-3vH"/>
+                <constraint firstItem="jJF-R4-7IN" firstAttribute="centerY" secondItem="S6D-Cd-VfW" secondAttribute="centerY" id="TgO-e3-klD"/>
+                <constraint firstItem="0Q1-MF-foP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="0.6" id="Tx5-ig-3Uq"/>
+                <constraint firstItem="udJ-gY-0ZW" firstAttribute="centerY" secondItem="OsX-1K-Gmb" secondAttribute="centerY" id="U5X-si-uFA"/>
+                <constraint firstItem="jJF-R4-7IN" firstAttribute="centerX" secondItem="udJ-gY-0ZW" secondAttribute="centerX" id="eOu-qK-6va"/>
+                <constraint firstItem="Fyx-wT-TV0" firstAttribute="centerX" secondItem="udJ-gY-0ZW" secondAttribute="centerX" id="ebn-1G-qZb"/>
+                <constraint firstItem="Fyx-wT-TV0" firstAttribute="centerY" secondItem="0Q1-MF-foP" secondAttribute="centerY" id="l5u-wH-xqD"/>
+                <constraint firstItem="0Q1-MF-foP" firstAttribute="top" secondItem="OsX-1K-Gmb" secondAttribute="bottom" constant="40" id="sW3-7Y-Akn"/>
+            </constraints>
+            <point key="canvasLocation" x="133" y="126"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
